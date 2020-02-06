@@ -1,0 +1,4 @@
+.pio
+.vscode
+src/wificreds.h
+.DS_Store
