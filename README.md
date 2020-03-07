@@ -9,3 +9,5 @@ Adapting buttonthings to the ESP32 platform is remarkably simple; the only major
 ```
 
 I've cleared out the 'extra' buttons and cleaned up some other bits and pieces, but the core of this version is effectively identical to [buttonthing](https://github.com/kenkl/buttonthing). As such, this is simply a demonstration of another way to implement a buttonthing-like thing.
+
+2020-03-07: Added a second button and making a permanent version - the lights that but7 and but8 (kcstog and rpctog, respectively) are useful enough to make it "official" - buttonthing32 is a worthy widget to have 'round.

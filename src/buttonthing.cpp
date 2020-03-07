@@ -19,16 +19,22 @@ const int button1 = 12;
 const char* url1 = "/lights/but7.php";
 int button1State = 0;
 
+const int button2 = 14;
+const char* url2 = "/lights/but8.php";
+int button2State = 0;
+
 void doThing(const char* url);
 
 void setup() {
   pinMode(button1, INPUT_PULLUP);
+  pinMode(button2, INPUT_PULLUP);
   pinMode(led, OUTPUT);
   digitalWrite(led, 1);
   Serial.begin(115200);
   Serial.println();
-  Serial.println("buttonthing32 - 20200205");
+  Serial.println("buttonthing32 - 20200307");
   Serial.println("fires /lights/but7.php on Max, in response to button on GPIO12");
+  Serial.println("fires /lights/but8.php on Max, in response to button on GPIO14");
 
   // We start by connecting to a WiFi network
   Serial.println();
@@ -58,6 +64,7 @@ void setup() {
 
 void loop() {
   button1State = digitalRead(button1);
+  button2State = digitalRead(button2);
 
   if(button1State == LOW) {
     Serial.println("button 1 pressed");
@@ -70,7 +77,18 @@ void loop() {
   else {
     digitalWrite(led, 0);
   }
-
+  
+  if(button2State == LOW) {
+    Serial.println("button 2 pressed");
+    digitalWrite(led, 1);
+    while(digitalRead(button2) == LOW) {
+       // debounce. wait until button is released.
+    }
+    doThing(url2);
+  }
+  else {
+    digitalWrite(led, 0);
+  }
 
 }
 
